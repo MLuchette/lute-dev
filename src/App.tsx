@@ -1,12 +1,20 @@
+import { motion, AnimatePresence } from 'motion/react';
+import { useExperienceStore } from '@state/experienceStore';
+import * as experiences from '@/components';
+
 function App() {
+  const currentExperience = useExperienceStore(
+    (state) => state.currentExperience
+  );
+
+  const Experience = experiences[currentExperience];
+
   return (
-    <>
-      <div className="h-screen w-screen bg-sky-950 font-mono text-white">
-        <div className="absolute left-1/2 top-1/2 rounded-md bg-green-800 p-2">
-          Hey!
-        </div>
-      </div>
-    </>
+    <AnimatePresence mode="popLayout">
+      <motion.div key={currentExperience}>
+        <Experience />
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
