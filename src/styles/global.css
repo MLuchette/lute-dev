@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-serif: "Gabarito Variable", ui-serif, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-primary: #3b82f6;
+  --color-primary-glow: rgba(59, 130, 246, 0.15);
+  --color-neutral: #94a3b8;
+  --color-white: #f1f5f9;
+  --color-black: #020617;
+  --color-black-lighter: #0f172a;
+  --color-black-deepest: #010410;
+
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.813rem;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 2.125rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.688rem;
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 3rem;
+  --text-6xl: 3rem;
+  --text-6xl--line-height: 3.625rem;
+  --text-7xl: 3.75rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 4.5rem;
+  --text-8xl--line-height: 4.875rem;
+  --text-9xl: 6rem;
+  --text-9xl--line-height: 6.625rem;
+
+  --tracking-tightest: -2px;
+  --tracking-tighter: -1px;
+  --tracking-tight: -0.25px;
+
+  --animate-slide-in: slide-in 600ms ease both;
+
+  @keyframes slide-in {
+    10% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  background-color: var(--color-black-deepest);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Ambient Breathing Edge Glow */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  box-shadow: inset 0 0 150px rgba(59, 130, 246, 0.15);
+  animation: ambient-pulse 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Precision Dotted Grid */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+@keyframes ambient-pulse {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(59, 130, 246, 0.2) 50%,
+    transparent
+  );
+  margin: 0 auto;
+}

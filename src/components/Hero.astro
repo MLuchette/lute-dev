@@ -1,0 +1,54 @@
+---
+import type { HeroProps } from "@types";
+type Props = HeroProps;
+
+const { name, specialty, summary } = Astro.props;
+---
+
+<section class="relative flex min-h-[85vh] flex-col justify-center py-24 md:py-32" id="hero">
+  <!-- Status Bar -->
+  <div class="mb-12 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] font-bold tracking-[0.2em] text-neutral uppercase">
+    <div class="flex items-center gap-2 text-primary">
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+      </span>
+      Currently Questing
+    </div>
+    <div class="hidden h-px w-8 bg-white/10 md:block"></div>
+    <div>Philadelphia / Bay Area</div>
+    <div class="hidden h-px w-8 bg-white/10 md:block"></div>
+    <div class="flex items-center gap-2">
+      Building for Humans
+    </div>
+  </div>
+
+  <div class="group relative">
+    <h1
+      class="mb-8 max-w-4xl font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:text-9xl md:leading-[0.9]"
+    >
+      {name}.
+    </h1>
+    
+    <div class="mt-12 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <p class="mb-6 font-serif text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl">
+          <span class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent whitespace-normal sm:whitespace-nowrap">{specialty}</span>
+        </p>
+        <p class="text-base leading-relaxed text-neutral md:text-lg">
+          {summary}
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a
+          class="inline-flex h-14 items-center justify-center whitespace-nowrap rounded-full bg-primary px-10 text-sm font-bold text-white transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)]"
+          href="https://www.linkedin.com/in/lutedev/"
+          target="_blank"
+        >
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

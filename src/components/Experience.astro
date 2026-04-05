@@ -1,0 +1,58 @@
+---
+import Section from "./Section.astro";
+import type { ExperienceProps } from "@types";
+
+interface Props {
+  experience: ExperienceProps[];
+}
+
+const { experience } = Astro.props;
+---
+
+<Section text="Career Journey" href="experience">
+  <div class="space-y-16">
+    {
+      experience.map(({ company, position, logo, startDate, endDate, summary }) => (
+        <div class="group relative flex flex-col gap-6 outline-none md:flex-row md:gap-12" tabindex="0">
+          {/* Logo Column */}
+          {logo && (
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/5 bg-white/5 transition-all duration-300 group-focus:border-primary/30 group-focus:bg-white/10 group-focus:shadow-[0_0_30px_rgba(59,130,246,0.1)] group-hover:border-primary/30 group-hover:bg-white/10 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] group-active:scale-95">
+              <img 
+                src={logo} 
+                alt={`${company} logo`} 
+                class="h-8 w-8 object-contain opacity-40 grayscale transition-all duration-300 group-focus:opacity-100 group-focus:grayscale-0 group-hover:opacity-100 group-hover:grayscale-0"
+              />
+            </div>
+          )}
+          
+          <div class="flex-1">
+            <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-baseline">
+              <div>
+                <h3 class="font-serif text-2xl font-bold tracking-tight text-white md:text-3xl">
+                  {position}
+                </h3>
+                <p class="mt-1 font-serif text-lg font-bold text-primary italic">
+                  {company}
+                </p>
+              </div>
+              <p class="font-mono text-xs font-bold tracking-widest text-neutral uppercase">
+                {startDate} — {endDate}
+              </p>
+            </div>
+            {Array.isArray(summary) ? (
+              <ul class="space-y-4">
+                {summary.map((log) => (
+                  <li class="relative pl-7 text-base leading-relaxed text-neutral/90 before:absolute before:top-[10px] before:left-0 before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary/60">
+                    {log}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-base leading-relaxed text-neutral/90">{summary}</p>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>
